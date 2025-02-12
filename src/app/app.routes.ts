@@ -11,7 +11,7 @@ import { FlagsmodeComponent } from './pages/game/flagsmode/flagsmode.component';
 import { ResultsflagsComponent } from './pages/resultsflags/resultsflags.component';
 import { CartomapComponent } from './pages/cartomap/cartomap.component';
 import { VideoLoaderComponent } from './video-loader/video-loader.component';
-import { ResultslandmarksComponent } from './pages/resultslandmarks/resultslandmarks.component';
+import { ResultslandmarksComponent } from './pages/game/resultslandmarks/resultslandmarks.component';
 
 
 
@@ -28,6 +28,6 @@ export const routes: Routes = [
   { path: 'resultsflags', component: ResultsflagsComponent },
   { path: 'cartomap', component: CartomapComponent},
   { path: 'loading', component: VideoLoaderComponent},
-  { path: 'resultslandmarks', component: ResultslandmarksComponent },
+  { path: 'resultslandmarks', component: ResultslandmarksComponent},
   { path: '**', redirectTo: '' } 
 ];

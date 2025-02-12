@@ -3,7 +3,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import maplibregl from 'maplibre-gl';
-import { LeaderboardService } from '../../services/leaderboard.service';
+import { LeaderboardService } from '../../../services/leaderboard.service';
 
 export interface LeaderboardEntry {
   name: string;
@@ -195,7 +195,7 @@ export class ResultslandmarksComponent {
               name: playerName,
               score: this.totalScore,
               time: `${Math.floor( this.timePassed / 60)}m ${this.timePassed % 60}s`,
-              mode: 'Street View Mode'
+              mode: 'Landmark Mode'
             };
         
             this.leaderboardService.addEntry(newEntry);
