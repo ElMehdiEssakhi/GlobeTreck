@@ -1,0 +1,74 @@
+{
+    "locations": [
+        {
+            "id": 1,
+            "name": "Mount Everest Base Camp, Nepal",
+            "latitude": 28.0026,
+            "longitude": 86.8528,
+            "iframe": "<iframe src='https://www.google.com/maps/embed?pb=!4v0!6m8!1m7!1sCAoSLEFGMVFpcFBTUGNNTmdjV1NZa0FZR2lLNXpzWXVKejdDQkRJcDRqd3ZZNThT!2m2!1d28.0026!2d86.8528!3f0!4f0!5f0' width='100%' height='100%' style='border:0;' allowfullscreen='' loading='lazy'></iframe>"
+        },
+        {
+            "id": 2,
+            "name": "Mogmog",
+            "latitude": 10.08797779545756,
+            "longitude": 139.70773143609843057,
+            "iframe": "<iframe src='https://www.google.com/maps/embed?pb=!4v1738268811748!6m8!1m7!1sCAoSLEFGMVFpcE5WZGtCMldCTTFrYzJxTUxjNDM3ODd6cEo2X1NIWS1Na3lXN2dG!2m2!1d10.08797779545756!2d139.7077314360984!3f13.845164889067107!4f-8.93060389501592!5f0.7820865974627469' width='100%' height='100%' style='border:0;' allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade'></iframe>"
+        },
+        {
+            "id": 3,
+            "name": "Antarctica - Union Glacier Camp",
+            "latitude": -79.7682,
+            "longitude": -82.8677,
+            "iframe": "<iframe src='https://www.google.com/maps/embed?pb=!4v1738268634641!6m8!1m7!1sCAoSLEFGMVFpcE15MU5lNzVua29VOG5jSDBaU1A0clliV1d4dm1IejRXU3JpRHJn!2m2!1d-66.8666670281377!2d-66.78333301049528!3f149.01271632793106!4f-21.615486116607286!5f0.7820865974627469' width='100%' height='100%' style='border:0;' allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade'></iframe>"
+        },
+        {
+            "id": 4,
+            "name": "Chernobyl, Ukraine",
+            "latitude": 51.3890,
+            "longitude": 30.0996,
+            "iframe": "<iframe src='https://www.google.com/maps/embed?pb=!4v0!6m8!1m7!1sCAoSLEFGMVFpcE9fbUxfN3djVm13MEpTZWJlTWF4bURWbnloM2JlckZ0aWZXQmdW!2m2!1d51.3890!2d30.0996!3f0!4f0!5f0' width='100%' height='100%' style='border:0;' allowfullscreen='' loading='lazy'></iframe>"
+        },
+        {
+            "id": 5,
+            "name": "Bhutan Temple",
+            "latitude": 49.10192032590627,
+            "longitude": 10.61396447773338,
+            "iframe": "<iframe src='https://www.google.com/maps/embed?pb=!4v1738268964283!6m8!1m7!1sCAoSLEFGMVFpcE9RVU9HZEJ0dzFYQUZYV3FXZzEwOHZ4X0FiVV9OZUl0QTRDY0Jl!2m2!1d49.10192032590627!2d10.61396447773338!3f33.22100598795659!4f4.006475302822608!5f0.7820865974627469' width='100%' height='100%' style='border:0;' allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade'></iframe>"
+        },
+        {
+            "id": 6,
+            "name": "The Catacombs of Paris, France",
+            "latitude": 48.8338,
+            "longitude": 2.3324,
+            "iframe": "<iframe src='https://www.google.com/maps/embed?pb=!4v0!6m8!1m7!1sCAoSLEFGMVFpcFBXOGN6NUtQVjZhZXBVTGdNT0EtSEV6dzF4NnhURmVCemZneGxG!2m2!1d48.8338!2d2.3324!3f0!4f0!5f0' width='100%' height='100%' style='border:0;' allowfullscreen='' loading='lazy'></iframe>"
+        },
+        {
+            "id": 7,
+            "name": "Random beach vietnam",
+            "latitude": 12.65213267610826,
+            "longitude": 109.4575401191335,
+            "iframe": "<iframe src='https://www.google.com/maps/embed?pb=!4v1738269411762!6m8!1m7!1sCAoSLEFGMVFpcE1zdVQ3Qlg3cEYtdTRkVm9ZYmtZX19iTFdNNDhCVnEtNTlsMWRv!2m2!1d12.65213267610826!2d109.4575401191335!3f228.33363439106824!4f5.621859613909123!5f0.4007502347267065' width='100%' height='100%' style='border:0;' allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade'></iframe>"
+        },
+        {
+            "id": 8,
+            "name": "Somewhere in canada",
+            "latitude": 45.28441572138362,
+            "longitude": -75.68537171346922,
+            "iframe": "<iframe src='https://www.google.com/maps/embed?pb=!4v1738269771059!6m8!1m7!1sCAoSLEFGMVFpcE5FVGVwSUN0Y2s4cF9GOFE4VzFQeEVvMGFjRGRGWF9WQzdjeDhF!2m2!1d45.28441572138362!2d-75.68537171346922!3f98.74101804597915!4f-6.886882069951639!5f0.7820865974627469' width='100%' height='100%' style='border:0;' allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade'></iframe>"
+        },
+        {
+            "id": 9,
+            "name": "Ludwig Maximilian University of Munich (LMU Munich)",
+            "latitude": 48.1506611731089,
+            "longitude": 11.5809632542149,
+            "iframe": "<iframe src='https://www.google.com/maps/embed?pb=!4v1738269939929!6m8!1m7!1sCAoSLEFGMVFpcE1JT3FUNkRTQ3BuTmU2ak1RakgtSWFjaHVwbmZnek1GUV9rZDky!2m2!1d48.1506611731089!2d11.5809632542149!3f104.2263100%1663804!4f16.063713103420028!5f0.4779281139552283' width='100%' height='100%' style='border:0;' allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade'></iframe>"
+        },
+        {
+            "id": 10,
+            "name": "Arbat Street, Moscow, Russia",
+            "latitude": 55.75172419733305,
+            "longitude": 37.5957870665596,
+            "iframe": "<iframe src='https://www.google.com/maps/embed?pb=!4v1738270165737!6m8!1m7!1sCAoSLEFGMVFpcFBaVVVQc3BFVUZ2Q1hzTzJrNXVlSFRrQmxjQzlBNExrVzhRTlFK!2m2!1d55.75172419733305!2d37.5957870665596!3f199.04058996278746!4f55.22365254409445!5f1.0741446929720355' width='100%' height='100%' style='border:0;' allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade'></iframe>"
+        }
+    ]
+}

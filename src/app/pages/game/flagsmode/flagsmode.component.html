@@ -1,0 +1,27 @@
+<div class="game-container">
+  <!-- Map Background -->
+  <div class="map-container">
+    <!-- Your map component goes here -->
+    <app-flagsm (name)="setGuessedCountryName($event)"></app-flagsm>
+  </div>
+
+  <!-- Overlay UI Elements -->
+
+    <div class="top-bar">
+      <div class="score">Score: {{ totalScore }}</div>
+      <div class="flag-container" *ngIf="currentFlag">
+        <img class="flag-image" [src]="currentFlag.source" [alt]="currentFlag.name">
+      </div>
+        <div class="timer">
+          <span [ngClass]="{'warning': timer <= 60, 'danger': timer <= 30, 'finished': timer == 0}">
+            ⏳ Time Left: {{ minutes }}:{{ seconds < 10 ? '0' : '' }}{{ seconds }}
+          </span>
+        </div>
+    </div>
+    <div class="overlay">
+
+    <div class="bottom-bar">
+      <button class="submitbtn" (click)="finishRound()">Submit Guess</button>
+    </div>
+  </div>
+</div>

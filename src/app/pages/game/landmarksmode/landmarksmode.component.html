@@ -1,0 +1,23 @@
+<div class="allholder">
+    <div class="loading-screen"  *ngIf="isLoading">
+        <img src="/logo-removebg.png" class="floating-logo" alt="Loading..." />
+        <div class="loading-text">Loading Round {{currentRound}}</div>
+    </div>
+    <div class="uiholder">
+        <div class="top-bar">
+            <div class="score">Round: {{ currentRound }}/5</div>
+              <div class="timer">
+                <span [ngClass]="{'warning': timer <= 60, 'danger': timer <= 30, 'finished': timer == 0}">
+                  ⏳ Time Left: {{ minutes }}:{{ seconds < 10 ? '0' : '' }}{{ seconds }}
+                </span>
+              </div>
+        </div>
+        <div class="bottom-bar">
+            <button class="submitbtn" (click)="finishRound()">Submit Guess</button>
+          </div>
+    </div>
+    <div id="holder"></div>
+    <div class="mapholder">
+        <app-sv-maplibre (locationClicked)="onLocationClicked($event)" ></app-sv-maplibre>
+    </div>
+  </div>

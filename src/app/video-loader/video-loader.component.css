@@ -1,0 +1,67 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+.loading-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+    background: linear-gradient(20deg,  rgb(139, 139, 91) 0% , #46423a 50%);
+    overflow: hidden;
+  }
+
+  video {
+    opacity: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    border-radius: 1em;
+    scale: 1;
+    display: block;
+}
+
+.css-typewriter {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid white;
+    font-size: 5vh;
+    font-family: 'Cinzel', monospace;
+    color: #46423a;
+    width: fit-content; 
+    margin: 0 auto;     
+    animation: 
+      typing 2.5s steps(10, end) infinite, 
+      blinkCursor 0.7s step-end infinite;
+  }
+  
+  @keyframes typing {
+    from { 
+      width: 3ch;
+    }
+    to { 
+      width: 15ch;  /* Width for "Loading..." - adjust if needed */
+    }
+  }
+  
+  @keyframes blinkCursor {
+    from, to { border-color: #46423a; }
+    50% { border-color: transparent; }
+  }
+  
+  /* Optional: Add a wrapper for centering */
+  .typewriter-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    height: 100vh;
+  }

@@ -1,0 +1,16 @@
+<div class="loading-container" *ngIf="isLoading">
+    <video 
+      #videoPlayer
+      [src]="videoSource"
+      [loop]="true"
+      [muted]="true"
+      [autoplay]="true"
+      playsinline
+      (error)="handleVideoError($event)">
+      Your browser does not support the video tag.
+    </video>
+    
+    <div class="typewriter-wrapper">
+        <div class="css-typewriter">Loading Game...</div>
+      </div>
+  </div>

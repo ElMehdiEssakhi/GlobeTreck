@@ -1,0 +1,74 @@
+{
+    "locations": [
+        {
+            "id": 1,
+            "name": "Eiffel Tower, France",
+            "latitude": 48.8584,
+            "longitude": 2.2945,
+            "iframe": "<iframe src='https://www.google.com/maps/embed?pb=!4v1738189058174!6m8!1m7!1sf3iFWvfcERn1rQ38X1dH6Q!2m2!1d48.85826209974352!2d2.294561668070692!3f104.4610415923081!4f-26.814024806549313!5f0.7820865974627469' width='100%' height='100%' style='border:0;' allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade'></iframe>"
+        },
+        {
+            "id": 2,
+            "name": "Statue of Liberty, USA",
+            "latitude": 40.6892,
+            "longitude": -74.0445,
+            "iframe": "<iframe src='https://www.google.com/maps/embed?pb=!4v1738196246586!6m8!1m7!1s-wwl7A7t0sjqQmhpYZuK4g!2m2!1d40.68974986282895!2d-74.04332463108712!3f55.40119957595456!4f-3.867118216843224!5f0.7820865974627469' width='100%' height='100%' style='border:0;' allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade'></iframe>"
+        },
+        {
+            "id": 3,
+            "name": "Tower of Pisa, Italy",
+            "latitude": 43.7230,
+            "longitude": 10.3966,
+            "iframe": " <iframe src='https://www.google.com/maps/embed?pb=!4v1738216469380!6m8!1m7!1sFt9SM2pSYXsEoe1yUC06KA!2m2!1d43.72308701600873!2d10.39550439045391!3f327.5204097222422!4f11.756977773027899!5f0.7820865974627469' width='100%' height='100%' style='border:0;' allowfullscreen='' loading='lazy'></iframe>"
+        },
+        {
+            "id": 4,
+            "name": "Great Wall of China, China",
+            "latitude": 40.4319,
+            "longitude": 116.5704,
+            "iframe": "<iframe src='https://www.google.com/maps/embed?pb=!4v1738196988315!6m8!1m7!1sCAoSLEFGMVFpcE5mTmJtMUNZRDhqTlJCNHV2Ym56R004STVuNE1lZmRhZldua3Np!2m2!1d40.44099268910601!2d116.5589562125218!3f293.72875894657665!4f-20.57101011074745!5f0.7820865974627469' width='100%' height='100%' style='border:0;' allowfullscreen='' loading='lazy'></iframe>"
+        },
+        {
+            "id": 5,
+            "name": "Sydney Opera House, Australia",
+            "latitude": -33.8568,
+            "longitude": 151.2153,
+            "iframe": "<iframe src='https://www.google.com/maps/embed?pb=!4v1738215538291!6m8!1m7!1sCAoSLEFGMVFpcE9yRzZucmE4ejhqNHhSbFZDNmc2YkZ5UWFkYnRibW9nTGZNZXpM!2m2!1d-33.85552201089457!2d151.2156660329393!3f264.6104011433989!4f-10.255611760475986!5f0.7820865974627469' width='100%' height='100%' style='border:0;' allowfullscreen='' loading='lazy'></iframe>"
+        },
+        {
+            "id": 6,
+            "name": "Big Ben, United Kingdom",
+            "latitude": 51.5007,
+            "longitude": -0.1246,
+            "iframe": "<iframe src='https://www.google.com/maps/embed?pb=!4v1738197910676!6m8!1m7!1s2o73Voecex3xeKUBkqoKAw!2m2!1d51.50292765755873!2d-0.1195135089151137!3f260.98757517050905!4f1.4165239913108678!5f1.1924812503605782' width='100%' height='100%' style='border:0;' allowfullscreen='' loading='lazy'></iframe>"
+        },
+        {
+            "id": 7,
+            "name": "Pyramids of Giza, Egypt",
+            "latitude": 29.9792,
+            "longitude": 31.1342,
+            "iframe": "<iframe src='https://www.google.com/maps/embed?pb=!4v1738198467621!6m8!1m7!1sCAoSLEFGMVFpcE1ZWm9DNXRBYXExbmtLcnNDSXA0WmJya1NqY0RzVHVtaHNyZGxs!2m2!1d29.97155483242205!2d31.12262067079242!3f279.7034585041637!4f-9.250519653817278!5f0.7820865974627469' width='100%' height='100%' style='border:0;' allowfullscreen='' loading='lazy'></iframe>"
+        },
+        {
+            "id": 8,
+            "name": "Times Square, USA",
+            "latitude": 40.7581,
+            "longitude": -73.9854,
+            "iframe": "<iframe src='https://www.google.com/maps/embed?pb=!4v1738217864894!6m8!1m7!1sEKKsk0lYrUtzzSE07L9kAw!2m2!1d40.75839217582733!2d-73.9852552222087!3f28.522840543642896!4f4.554850915953907!5f0.7820865974627469' width='100%' height='100%' style='border:0;' allowfullscreen='' loading='lazy'></iframe>"
+        },
+        {
+            "id": 9,
+            "name": "Koutoubia Mosque, Morocco",  
+            "latitude": 31.6239,
+            "longitude": -7.9936,
+            "iframe": "<iframe src='https://www.google.com/maps/embed?pb=!4v1738214908481!6m8!1m7!1sCAoSLEFGMVFpcE9KNFFocm5RLUp6YzRCX3dDQXN3cWFJb3ZhMmwxWDFZUDBCcGJt!2m2!1d31.62518883828174!2d-7.992302880017941!3f174.12342836888791!4f-9.830801026447062!5f0.7820865974627469' width='100%' height='100%' style='border:0;' allowfullscreen='' loading='lazy'></iframe>"
+        },
+        {
+            "id": 10,
+            "name": "Taj Mahal, India",
+            "latitude": 27.1751,
+            "longitude": 78.0421,
+            "iframe": "<iframe src='https://www.google.com/maps/embed?pb=!4v1738213903909!6m8!1m7!1sbWbup7qVEd0WET7FJ_aKAw!2m2!1d27.17377198702128!2d78.04223620555051!3f351.5806283715939!4f-5.727974675791174!5f0.7820865974627469' width='100%' height='100%' style='border:0;' allowfullscreen='' loading='lazy'></iframe>"
+        }
+    ]
+}

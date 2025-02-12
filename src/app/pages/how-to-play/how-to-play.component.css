@@ -1,0 +1,56 @@
+/* Page Background */
+.frame {
+    background-color: #515437;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Content Wrapper */
+.content {
+    background-color: #ecefce;
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 800px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Title */
+.title {
+    font-family: "Roboto Serif", serif;
+    font-weight: 700;
+    font-size: 42px;
+    color: #2d2a23;
+    margin-bottom: 20px;
+}
+
+/* Paragraph Styles */
+.description {
+    font-family: "Roboto Flex", sans-serif;
+    font-size: 20px;
+    color: #2d2a23;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+
+/* RESPONSIVENESS */
+@media (max-width: 768px) {
+    .content {
+        max-width: 90%;
+        padding: 30px;
+    }
+
+    .title {
+        font-size: 36px;
+    }
+
+    .description {
+        font-size: 18px;
+    }
+}
