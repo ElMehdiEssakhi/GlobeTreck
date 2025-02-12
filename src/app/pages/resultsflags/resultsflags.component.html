@@ -2,9 +2,7 @@
   <h2 class="round-title">Round {{round}}</h2>
   
   <!-- Map Container -->
-    <div class="map-container">
-      <app-flagsm class="map" [correctCountry]="flagName" [falseCountry]="guessedCountry" [hover]="false"></app-flagsm>
-    </div>
+  <div #mapContainer id="map"></div>
 
   <!-- Results Section -->
   <div class="results-section">

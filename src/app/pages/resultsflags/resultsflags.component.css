@@ -17,19 +17,17 @@
   font-family: "Press Start 2P", serif;
 }
 
-.map-container {
-  width: 120vh;
-  height: 47vh;
+#map {
+  width: 70vh;
+  height: 30vh;
   background-color: #2a2b36;
   border-radius: 8px;
   margin-bottom: 30px;
-  display: flex;
 }
 .map{
-  width: 100%;
-  height: 100%;
+  width: auto;
+  height: auto;
 }
-
 
 .results-section {
   width: 100%;
