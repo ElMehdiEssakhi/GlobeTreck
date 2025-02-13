@@ -374,23 +374,11 @@ export class ResultsflagsComponent implements OnInit {
     coords.forEach(coord => {
       bounds.extend(new maplibregl.LngLat(coord[0], coord[1]));
     });
-  
-    // Calculate better padding based on the viewport size
-    const viewport = map.getContainer().getBoundingClientRect();
-    const dynamicPadding = Math.min(viewport.width, viewport.height) * 0.2; // 20% of viewport
 
-    map.fitBounds(bounds, {
-      padding: {
-        top: dynamicPadding ,
-        bottom: dynamicPadding ,
-        left: dynamicPadding,
-        right: dynamicPadding
-      },
-      duration: 2000, 
-      maxZoom: 2,         // Reduced max zoom to prevent getting too close
-      minZoom: 2,         // Added min zoom to maintain context
-      linear: false,      // Smooth easing
-      essential: true     // Makes the animation more reliable
+
+    this.map.fitBounds(bounds, {
+      padding: { top: 50, bottom: 50, left: 50, right: 50 },
+      duration: 1500
     });
 }
   

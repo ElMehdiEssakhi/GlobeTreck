@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: "Avro", serif;
 }
 
 .round-title {
@@ -153,7 +154,6 @@ td:last-child {
   padding: 12px 30px;
   border-radius: 9999px;
   border: 2px solid #059669;
-  border: none;
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.2s ease;
@@ -172,7 +172,6 @@ td:last-child {
   border-radius: 9999px;
   border: 2px solid #374151;
   font-weight: 500;
-  border: none;
   cursor: pointer;
   max-width: 300px;
   text-align: center;
