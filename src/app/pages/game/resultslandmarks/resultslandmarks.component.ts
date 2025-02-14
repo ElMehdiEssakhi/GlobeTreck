@@ -187,6 +187,12 @@ export class ResultslandmarksComponent {
           queryParams: { totalScore : this.totalScore, round: this.round , timePassed: this.timePassed}
         });
       }
+      goHome(): void {
+        this.router.navigate(['/']);
+      }
+      goToLeaderboard(): void {
+        this.router.navigate(['/leaderboard']); 
+      }
       saveScore() {
             const playerName = prompt("Enter your name:");
             if (!playerName) return;

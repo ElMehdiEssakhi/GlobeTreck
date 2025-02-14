@@ -188,6 +188,9 @@ export class ResultsComponent {
       goHome(): void {
         this.router.navigate(['/']);
       }
+      goToLeaderboard(): void {
+        this.router.navigate(['/leaderboard']); 
+      }
       saveScore() {
             const playerName = prompt("Enter your name:");
             if (!playerName) return;

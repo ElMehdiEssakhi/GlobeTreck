@@ -126,7 +126,9 @@ export class ResultsflagsComponent implements OnInit {
     }
   }
 
-
+  goHome(): void {
+    this.router.navigate(['/']);
+  }
   // Navigate to the next round (or back to the game)
   goToNextRound(): void {
     // Increment the round counter

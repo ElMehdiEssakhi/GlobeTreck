@@ -71,7 +71,7 @@
         <button *ngIf="isFinal" (click)="saveScore()" class="next-round-btn">
           SAVE SCORE
         </button>
-        <a href="/leaderboard" *ngIf="isFinal" class="leaderbtn">
+        <a *ngIf="isFinal" (click)="goToLeaderboard()" class="leaderbtn">
           Leaderboard
         </a>
         <a (click)="goHome()" class="secondary-button">
