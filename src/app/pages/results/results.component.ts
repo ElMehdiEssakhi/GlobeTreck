@@ -33,7 +33,7 @@ export class ResultsComponent {
   isFinal: boolean = false;
   timePassed: number = 0;
   myclick: any = null;
-  private markerImagePath = '/images/marker.jpg'; // Update with your image path
+  private markerImagePath = '/images/Pennant.jpg'; // Update with your image path
   constructor(private route: ActivatedRoute,private router:Router,private leaderboardService: LeaderboardService){}
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {//using the params we get from the previous component
@@ -184,6 +184,9 @@ export class ResultsComponent {
         this.router.navigate(['/streetview'], { 
           queryParams: { totalScore : this.totalScore, round: this.round , timePassed: this.timePassed}
         });
+      }
+      goHome(): void {
+        this.router.navigate(['/']);
       }
       saveScore() {
             const playerName = prompt("Enter your name:");
