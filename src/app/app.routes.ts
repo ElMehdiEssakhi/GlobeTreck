@@ -30,5 +30,6 @@ export const routes: Routes = [
   { path: 'cartomap', component: CartomapComponent},
   { path: 'loading', component: VideoLoaderComponent},
   { path: 'resultslandmarks', component: ResultslandmarksComponent},
+  { path: 'flagsm' , component: FlagsMComponent},
   { path: '**', redirectTo: '' } 
 ];

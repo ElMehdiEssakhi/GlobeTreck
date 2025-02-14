@@ -184,11 +184,11 @@ export class ResultsflagsComponent implements OnInit {
       this.fitMapToBounds(this.map, this.countryCoords);
       console.log('1:');
     }
-    // else if(this.flagName){
-    //   this.fitMapToBounds(this.map, [ [this.longitudeCorrect, this.latitudeCorrect] , [this.longitudeCorrect, this.latitudeCorrect] ] );
-    //   // Add these before calling fitMapToBounds
-    //   console.log('2:' + this.countryCoords);
-    // }
+    else if(this.flagName){
+      this.fitMapToBounds(this.map, [ [this.longitudeCorrect, this.latitudeCorrect] , [this.longitudeCorrect, this.latitudeCorrect] ] );
+      // Add these before calling fitMapToBounds
+      console.log('2:' + this.countryCoords);
+    }
 
   }
 
@@ -397,5 +397,6 @@ export class ResultsflagsComponent implements OnInit {
     }
   }
 }
+
 
 

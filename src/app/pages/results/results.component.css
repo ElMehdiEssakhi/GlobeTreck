@@ -19,11 +19,10 @@
 }
 
 #map {
-  width: 120vh;
-  height: 47vh;
+  width: 70vh;
+  height: 30vh;
   background-color: #2a2b36;
   border-radius: 8px;
-  overflow: hidden;
   margin-bottom: 30px;
 }
 .map{
