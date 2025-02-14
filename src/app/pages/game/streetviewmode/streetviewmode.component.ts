@@ -26,6 +26,8 @@ export class StreetviewmodeComponent {
   roundscore: number = 0; // Score for the current round
   totalRounds: number = 5; // Total number of rounds
   timePassed: number = 0; // Time passed in seconds
+  isDropdownOpen = false;
+
   constructor(
     private randomsv: RandomstreetviewsService,
     private router: Router,
@@ -172,6 +174,30 @@ export class StreetviewmodeComponent {
   async initializeVIEW() {
     this.mycurrentlocation = await this.randomsv.getRandomLocation();//wait for service to fetch streetviews
     document.getElementById('holder')!.innerHTML = this.mycurrentlocation.iframe;
+  }
+
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen;
+    const navElement = document.querySelector('.nav');
+    if (this.isDropdownOpen) {
+      navElement?.classList.add('menu-open');
+    } else {
+      navElement?.classList.remove('menu-open');
+    }
+  }
+
+  navigateToHome() {
+    this.router.navigate(['/']);
+  }
+
+  navigateToLeaderbord() {
+    // Add restart logic here
+    this.router.navigate(['leaderboard']);
+  }
+
+  quitGame() {
+      this.router.navigate(['/select-mode']);
+      this.isDropdownOpen = false;
   }
  
 }

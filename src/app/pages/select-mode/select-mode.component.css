@@ -35,10 +35,10 @@
     justify-content: center;
     padding: 20px;
 }
-
 .logo img {
-    width: 80px;
-    height: 80px;
+    cursor: pointer;
+    width: 150px;
+    height: auto;
     margin-right: 15px;
     transition: transform 0.3s ease-in-out;
    

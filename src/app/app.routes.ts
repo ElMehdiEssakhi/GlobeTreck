@@ -12,6 +12,7 @@ import { ResultsflagsComponent } from './pages/resultsflags/resultsflags.compone
 import { CartomapComponent } from './pages/cartomap/cartomap.component';
 import { VideoLoaderComponent } from './video-loader/video-loader.component';
 import { ResultslandmarksComponent } from './pages/game/resultslandmarks/resultslandmarks.component';
+import { FlagsMComponent } from './pages/game/flags-maplibre/flagsm.component';
 
 
 

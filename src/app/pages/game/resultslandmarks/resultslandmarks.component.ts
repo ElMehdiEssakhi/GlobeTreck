@@ -71,7 +71,8 @@ export class ResultslandmarksComponent {
       container: this.mapContainer.nativeElement,
       style: 'https://api.maptiler.com/maps/streets-v2/style.json?key=ux7U0JoDzUbunhk0mxHh',
       center: [2, 45],
-      zoom: 3
+      zoom: 3,
+      attributionControl: false
     });
 
     this.map.on('load', () => {

@@ -44,6 +44,7 @@ export class SvMaplibreComponent {
       style: 'https://api.maptiler.com/maps/streets-v2/style.json?key=ux7U0JoDzUbunhk0mxHh',
       center: [2, 45], // Initial view (longitude, latitude)
       zoom: 3,
+      attributionControl: false // Hide the default attribution control
     });
       this.map.addControl(new maplibregl.NavigationControl());
       

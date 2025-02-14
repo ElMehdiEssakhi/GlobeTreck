@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,ElementRef, ViewChild} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FlagsMComponent } from '../game/flags-maplibre/flagsm.component';
 import { LeaderboardService } from '../../services/leaderboard.service';
+import * as maplibregl from 'maplibre-gl';
 
 export interface LeaderboardEntry {
   name: string;
@@ -13,11 +13,13 @@ export interface LeaderboardEntry {
 
 @Component({
   selector: 'app-resultsflags',
-  imports: [CommonModule , FlagsMComponent],
+  imports: [CommonModule ],
   templateUrl: './resultsflags.component.html',
   styleUrls: ['./resultsflags.component.css']
 })
 export class ResultsflagsComponent implements OnInit {
+  @ViewChild('mapContainer', { static: false }) mapContainer!: ElementRef;
+  private map!: maplibregl.Map;
   // Data received via query parameters
   flagName: string = '';
   flagImage: string = '';
@@ -29,6 +31,7 @@ export class ResultsflagsComponent implements OnInit {
   isFinal: boolean = false;
   timePassed: number = 0;
   istrue: boolean = false;
+  hover: boolean = true;
 
   // Additional country details to be fetched
   capital: string = 'N/A';
@@ -72,6 +75,9 @@ export class ResultsflagsComponent implements OnInit {
     if (this.round == 10) {
       this.isFinal = true;
     }
+    this.fetchCountryCorrect();
+    this.fetchCountryDetails(this.flagName);
+    this.hover = false;
   }
 
   fetchCountryDetails(countryName: string): void {
@@ -158,6 +164,238 @@ export class ResultsflagsComponent implements OnInit {
     restartGame() {
       this.router.navigate(['/flags']);
     }
+
+    // Map
+    // Variable to store the currently hovered country (for hover effects)
+  private hoveredFeatureId: string | number | undefined;
+  // Variable to store the currently clicked country (for click effects)
+  private clickedFeatureId: string | number | undefined;
+  
+  selectedCountry: string = '';
+  countryname: string = '';
+  countryCoords: [number, number][] = [];
+
+
+
+  ngAfterViewInit(): void {
+    this.initializeMap();
+    if (this.flagName && this.guessedCountry) {
+      this.countryCoords = [ [this.longitudeCorrect, this.latitudeCorrect] , [this.longitudeGuessed, this.latitudeGuessed] ];
+      this.fitMapToBounds(this.map, this.countryCoords);
+      console.log('1:');
+    }
+    // else if(this.flagName){
+    //   this.fitMapToBounds(this.map, [ [this.longitudeCorrect, this.latitudeCorrect] , [this.longitudeCorrect, this.latitudeCorrect] ] );
+    //   // Add these before calling fitMapToBounds
+    //   console.log('2:' + this.countryCoords);
+    // }
+
+  }
+
+  async initializeMap() {
+    this.map = new maplibregl.Map({
+      container: this.mapContainer.nativeElement,
+      style: 'https://api.maptiler.com/maps/streets-v2/style.json?key=ux7U0JoDzUbunhk0mxHh',
+      center: [2, 45], // Initial view (longitude, latitude)
+      zoom: 3,
+      attributionControl: false,
+    });
+    this.map.addControl(new maplibregl.NavigationControl());
+    this.map.on('load', () => {
+      this.loadGeoJson();
+    });
+
+  }
+
+  // Load GeoJSON with country boundaries (borders.json)
+  private loadGeoJson(): void {
+    const geoJsonUrl = 'data/borders.json'; // Path to your borders GeoJSON file
+    fetch(geoJsonUrl)
+      .then(response => response.json())
+      .then(geoJsonData => {
+        // Assign a unique ID to each feature
+        geoJsonData.features.forEach((feature: { id: any; }, index: number) => {
+          feature.id = index;
+        });
+
+        // Add GeoJSON source to the map
+        this.map.addSource('countries', {
+          type: 'geojson',
+          data: geoJsonData
+        });
+
+        // Add GeoJSON layer to display countries
+        let fillColorExpression;
+
+        if (!this.hover) {
+          // When hover effects are disabled, do not include any hover condition.
+          fillColorExpression = [
+            'case',
+            // Always fill the correct country with green:
+            ['==', ['get', 'NAME'], this.flagName], '#00ff00',
+            // Always fill the false country with red:
+            ['==', ['get', 'NAME'], this.guessedCountry], '#ff0000',
+            // Otherwise, keep transparent:
+            'rgba(0,0,0,0)'
+          ];
+        } else {
+          // When hover effects are enabled, include hover in the expression.
+          fillColorExpression = [
+            'case',
+            // Persistent highlight for correct and false countries:
+            ['==', ['get', 'NAME'], this.flagName], '#00ff00',
+            ['==', ['get', 'NAME'], this.guessedCountry], '#ff0000',
+            // If no persistent highlight, apply hover color if hovered:
+            ['boolean', ['feature-state', 'hover'], false], '#ffff00',
+            ['boolean', ['feature-state', 'click'], false], '#ffff00',
+            // Default transparent fill:
+            'rgba(0,0,0,0)'
+          ];
+        }
+        
+        // Now add your layer with the computed expression:
+        this.map.addLayer({
+          id: 'countries-layer',
+          type: 'fill',
+          source: 'countries',
+          layout: {},
+          paint: {
+            'fill-color': fillColorExpression as maplibregl.ExpressionSpecification,
+            
+            // You can set fill-opacity similarly, e.g.:
+            'fill-opacity': 0.5
+          }
+        });
+        
+
+        // Handle mouse events for country interaction
+        this.map.on('mousemove', 'countries-layer', (e) => this.highlightFeature(e));
+        this.map.on('mouseleave', 'countries-layer', (e) => this.resetHighlight(e));
+        this.map.on('click', 'countries-layer', (e) => this.clickFeature(e));
+      })
+      .catch(error => {
+        console.error('Error loading GeoJSON:', error);
+        alert('Error loading the map data.');
+      });
+  }
+  
+  // Highlight feature on mousemove (hover)
+  private highlightFeature(e: maplibregl.MapMouseEvent): void {
+    const features = this.map.queryRenderedFeatures(e.point, { layers: ['countries-layer'] });
+    if (features.length > 0) {
+      const newHoveredId = features[0].id;
+      // Remove hover state from previously hovered feature if it is different
+      if (this.hoveredFeatureId !== undefined && this.hoveredFeatureId !== newHoveredId) {
+        this.map.setFeatureState(
+          { source: 'countries', id: this.hoveredFeatureId },
+          { hover: false }
+        );
+      }
+      this.hoveredFeatureId = newHoveredId;
+      this.map.setFeatureState(
+        { source: 'countries', id: this.hoveredFeatureId },
+        { hover: true }
+      );
+      this.countryname = features[0].properties['NAME'];
+    }
+  }
+  
+  // Remove hover state when mouse leaves the country area
+  private resetHighlight(e: maplibregl.MapMouseEvent): void {
+    if (this.hoveredFeatureId !== undefined) {
+      this.map.setFeatureState(
+        { source: 'countries', id: this.hoveredFeatureId },
+        { hover: false }
+      );
+      this.hoveredFeatureId = undefined;
+    }
+  }
+
+  // Set a country as clicked and emit its name.
+  // Also, reset the previously clicked country (if any) to normal.
+  private clickFeature(e: maplibregl.MapMouseEvent): void {
+    const features = this.map.queryRenderedFeatures(e.point, { layers: ['countries-layer'] });
+    if (features.length > 0) {
+      const newClickedId = features[0].id;
+      // Reset the previously clicked country's state if it's different from the new one
+      if (this.clickedFeatureId !== undefined && this.clickedFeatureId !== newClickedId) {
+        this.map.setFeatureState(
+          { source: 'countries', id: this.clickedFeatureId },
+          { click: false }
+        );
+      }
+      this.clickedFeatureId = newClickedId;
+      this.map.setFeatureState(
+        { source: 'countries', id: this.clickedFeatureId },
+        { click: true }
+      );
+      this.selectedCountry = features[0].properties['NAME'];
+    }
+  }
+
+
+  
+  async fetchCountryCorrect(): Promise<void> {
+    if (this.flagName) {
+      const url = `https://restcountries.com/v3.1/name/${encodeURIComponent(this.flagName)}?fullText=true`;
+      try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error(`Error fetching details for ${this.flagName}`);
+        }
+        const data = await response.json();
+        const countryData = data[0];
+        if (countryData.latlng && countryData.latlng.length >= 2) {
+          // API returns [lat, lng] so assign accordingly.
+          this.latitudeCorrect = countryData.latlng[0];
+          this.longitudeCorrect = countryData.latlng[1];
+          console.log(`Correct country (${this.flagName}) coordinates: [${this.longitudeCorrect}, ${this.latitudeCorrect}]`);
+        } else {
+          console.error('LatLng data missing for correct country.');
+        }
+        // Update bounds if both coordinates are available.
+        this.updateMapBounds();
+      } catch (err) {
+        console.error('Error fetching correct country details:', err);
+      }
+    }
+  }
+  
+
+  
+  // Extend bounds to include both locations
+  fitMapToBounds(map: maplibregl.Map, coords: [number, number][]) {
+    if (!map || coords.length < 2) {
+      console.error("Map not initialized or not enough coordinates provided.");
+      return;
+    }
+  
+    const bounds = new maplibregl.LngLatBounds();
+  
+    coords.forEach(coord => {
+      bounds.extend(new maplibregl.LngLat(coord[0], coord[1]));
+    });
+
+
+    this.map.fitBounds(bounds, {
+      padding: { top: 50, bottom: 50, left: 50, right: 50 },
+      duration: 1500
+    });
+}
+  
+  updateMapBounds(): void {
+    // Check if both coordinates exist (assuming 0 means not set)
+    if (this.longitudeGuessed && this.latitudeGuessed && this.longitudeCorrect && this.latitudeCorrect) {
+      this.countryCoords = [
+        [this.longitudeGuessed, this.latitudeGuessed],
+        [this.longitudeCorrect, this.latitudeCorrect]
+      ];
+
+      // Now call the function to fit the map bounds.
+      this.fitMapToBounds(this.map, this.countryCoords);
+      this.hover = false;
+    }
+  }
 }
 
 

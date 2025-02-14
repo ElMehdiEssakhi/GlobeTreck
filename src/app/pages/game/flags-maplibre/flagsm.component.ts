@@ -58,8 +58,9 @@ export class FlagsMComponent implements AfterViewInit , OnInit {
     this.map = new maplibregl.Map({
       container: this.mapContainer.nativeElement,
       style: 'https://api.maptiler.com/maps/streets-v2/style.json?key=ux7U0JoDzUbunhk0mxHh',
-      center: [2, 45], // Initial view (longitude, latitude)
-      zoom: 3
+      center: [2, 30], // Initial view (longitude, latitude)
+      zoom: 1.5, // Initial zoom level
+      attributionControl: false
     });
     this.map.addControl(new maplibregl.NavigationControl());
     this.map.on('load', () => {

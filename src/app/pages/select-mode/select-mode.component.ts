@@ -49,4 +49,7 @@ export class SelectModeComponent {
         break;
     }
   }
+  navigateToHome() {
+    this.router.navigate(['/']);
+  }
 }

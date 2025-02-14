@@ -14,9 +14,10 @@ export class FlagsmodeComponent implements OnInit, OnDestroy {
   currentFlag: Flag | null = null;    // Holds the current flag
   flags: Flag[] = [];                 // List of available flags
   guessedCountryName: string = '';    // Country name retrieved via reverse geocoding
-
+  isDropdownOpen = false;
   // Two-way binding property: will be updated by the child (CartomapComponent)
   selectedCoordinates: { lat: number, lng: number } | null = null;
+ 
   setSelectedCoordinates(coords: { lat: number, lng: number }): void {
     this.selectedCoordinates = coords;
     // this.onReverseGeocode();  // Automatically call reverse geocoding when coordinates are updated
@@ -26,8 +27,9 @@ export class FlagsmodeComponent implements OnInit, OnDestroy {
   }
 
   // Timer Variables
-  timer: number = 120;  // 2 minutes per round
+  timer: number = 124;  // 2 minutes per round
   intervalId: any;
+  isLoading: boolean = true;
 
   // Scoring Variables
   totalScore: number = 0; // Accumulates the total score across rounds
@@ -48,6 +50,7 @@ export class FlagsmodeComponent implements OnInit, OnDestroy {
     this.flagService.getFlags().subscribe((response: { flags: Flag[] }) => {
       this.flags = response.flags;
       this.startNewRound();
+      this.loadMap();
     });
 
     this.route.queryParams.subscribe(params => {
@@ -64,6 +67,13 @@ export class FlagsmodeComponent implements OnInit, OnDestroy {
 
 
   }
+    //loading screen
+    loadMap() {
+      // Simulating street view loading delay
+      setTimeout(() => {
+        this.isLoading = false; // Hide loading screen when the map loads
+      }, 4000); // Adjust this delay if necessary
+    }
 
   ngOnDestroy(): void {
     this.stopTimer();
@@ -163,7 +173,7 @@ export class FlagsmodeComponent implements OnInit, OnDestroy {
       flagName: this.currentFlag ? this.currentFlag.name : '',
       flagImage: this.currentFlag ? this.currentFlag.source : '',
       guessedCountry: this.guessedCountryName,
-      timeLeft: this.timer,
+      timeLeft: this.timer ,
       roundScore: roundScore,
       currentRound : this.currentRound,
       totalScore: this.totalScore,
@@ -176,6 +186,34 @@ export class FlagsmodeComponent implements OnInit, OnDestroy {
 
 
   
+
+
+
+ 
+
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen;
+    const navElement = document.querySelector('.nav');
+    if (this.isDropdownOpen) {
+      navElement?.classList.add('menu-open');
+    } else {
+      navElement?.classList.remove('menu-open');
+    }
+  }
+  navigateToHome() {
+    this.router.navigate(['/']);
+  }
+
+  navigateToLeaderbord() {
+    // Add restart logic here
+    this.router.navigate(['leaderboard']);
+  }
+
+  quitGame() {
+      this.router.navigate(['/select-mode']);
+      this.isDropdownOpen = false;
+  }
+
 }
 
 
