@@ -203,6 +203,15 @@ export class ResultsflagsComponent implements OnInit {
     this.map.addControl(new maplibregl.NavigationControl());
     this.map.on('load', () => {
       this.loadGeoJson();
+      if (this.flagName && this.guessedCountry) {
+        this.countryCoords = [
+          [this.longitudeCorrect, this.latitudeCorrect], 
+          [this.longitudeGuessed, this.latitudeGuessed]
+        ];
+        this.fitMapToBounds(this.map, this.countryCoords);
+      } else if (this.flagName) {
+        this.fitMapToBounds(this.map, [[this.longitudeCorrect, this.latitudeCorrect]]);
+      }
     });
 
   }
@@ -371,31 +380,36 @@ export class ResultsflagsComponent implements OnInit {
     }
   
     const bounds = new maplibregl.LngLatBounds();
+    coords.forEach(coord => bounds.extend(new maplibregl.LngLat(coord[0], coord[1])));
   
-    coords.forEach(coord => {
-      bounds.extend(new maplibregl.LngLat(coord[0], coord[1]));
-    });
-
-
     this.map.fitBounds(bounds, {
       padding: { top: 50, bottom: 50, left: 50, right: 50 },
-      duration: 1500
+      duration: 1500,
+      maxZoom: 3 // Prevents extreme zoom-in
     });
-}
+  }
+  
   
   updateMapBounds(): void {
-    // Check if both coordinates exist (assuming 0 means not set)
-    if (this.longitudeGuessed && this.latitudeGuessed && this.longitudeCorrect && this.latitudeCorrect) {
-      this.countryCoords = [
-        [this.longitudeGuessed, this.latitudeGuessed],
-        [this.longitudeCorrect, this.latitudeCorrect]
-      ];
+  if (
+    this.longitudeGuessed !== 0 && this.latitudeGuessed !== 0 &&
+    this.longitudeCorrect !== 0 && this.latitudeCorrect !== 0
+  ) {
+    this.countryCoords = [
+      [this.longitudeGuessed, this.latitudeGuessed],
+      [this.longitudeCorrect, this.latitudeCorrect]
+    ];
 
-      // Now call the function to fit the map bounds.
+    if (this.map) {
       this.fitMapToBounds(this.map, this.countryCoords);
-      this.hover = false;
+    } else {
+      console.error('Map instance is not ready yet.');
     }
+  } else {
+    console.warn("Invalid coordinates for fitBounds.");
   }
+}
+
 }
 
 

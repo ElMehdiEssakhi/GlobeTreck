@@ -13,6 +13,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "allowedCommonJsDependencies": [
+              "maplibre-gl"
+            ],
             "outputPath": "dist/webproject",
             "index": "src/index.html",
             "browser": "src/main.ts",
@@ -28,7 +31,6 @@
               }
             ],
             "styles": [
-              "node_modules/leaflet/dist/leaflet.css",
               "node_modules/maplibre-gl/dist/maplibre-gl.css",
               "src/styles.css",
               "bootstrap/dist/css/bootstrap.min.css"
@@ -40,6 +42,10 @@
           },
           "configurations": {
             "production": {
+              "optimization": true,
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
               "budgets": [
                 {
                   "type": "initial",

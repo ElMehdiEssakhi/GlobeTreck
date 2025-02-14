@@ -9,8 +9,6 @@ import { StreetviewmodeComponent } from './pages/game/streetviewmode/streetviewm
 import { LandmarksmodeComponent } from './pages/game/landmarksmode/landmarksmode.component';
 import { FlagsmodeComponent } from './pages/game/flagsmode/flagsmode.component';
 import { ResultsflagsComponent } from './pages/resultsflags/resultsflags.component';
-import { CartomapComponent } from './pages/cartomap/cartomap.component';
-import { VideoLoaderComponent } from './video-loader/video-loader.component';
 import { ResultslandmarksComponent } from './pages/game/resultslandmarks/resultslandmarks.component';
 import { FlagsMComponent } from './pages/game/flags-maplibre/flagsm.component';
 
@@ -27,8 +25,6 @@ export const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'how-to-play', component: HowToPlayComponent },
   { path: 'resultsflags', component: ResultsflagsComponent },
-  { path: 'cartomap', component: CartomapComponent},
-  { path: 'loading', component: VideoLoaderComponent},
   { path: 'resultslandmarks', component: ResultslandmarksComponent},
   { path: 'flagsm' , component: FlagsMComponent},
   { path: '**', redirectTo: '' } 

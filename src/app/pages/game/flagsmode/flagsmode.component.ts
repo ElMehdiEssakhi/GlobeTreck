@@ -15,7 +15,6 @@ export class FlagsmodeComponent implements OnInit, OnDestroy {
   flags: Flag[] = [];                 // List of available flags
   guessedCountryName: string = '';    // Country name retrieved via reverse geocoding
   isDropdownOpen = false;
-  // Two-way binding property: will be updated by the child (CartomapComponent)
   selectedCoordinates: { lat: number, lng: number } | null = null;
  
   setSelectedCoordinates(coords: { lat: number, lng: number }): void {
