@@ -376,18 +376,13 @@ export class ResultsflagsComponent implements OnInit {
   
   // Extend bounds to include both locations
   fitMapToBounds(map: maplibregl.Map, coords: [number, number][]) {
-    if (!map || coords.length < 2) {
-      console.error("Map not initialized or not enough coordinates provided.");
-      return;
-    }
-  
     const bounds = new maplibregl.LngLatBounds();
     coords.forEach(coord => bounds.extend(new maplibregl.LngLat(coord[0], coord[1])));
   
     this.map.fitBounds(bounds, {
       padding: { top: 50, bottom: 50, left: 50, right: 50 },
       duration: 1500,
-      maxZoom: 3 // Prevents extreme zoom-in
+      maxZoom: 2 // Prevents extreme zoom-in
     });
   }
   
