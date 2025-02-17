@@ -26,7 +26,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  pointer-events: auto;
+  pointer-events: none;
 
 }
 .bottom-bar {
@@ -83,10 +83,12 @@
   position: relative;
   margin-right: 40px;
   z-index: 1;
+  width: 350px;
   
 }
 .timer span {
-  width: 150px;
+
+  width: 200px;
 }
 
 /* Button Style */
@@ -110,7 +112,7 @@
 }
 /* Score */
 .round {
-  font-size: 1.2em;
+  font-size: 1em;
   font-weight: bold;
   border-right: 1px solid white;
   padding-right: 10px;
@@ -167,6 +169,7 @@
   z-index: 1;
   font-weight: bold;
   position: relative;
+  pointer-events: auto;
 }
 .nav img {
   width: 200px;
