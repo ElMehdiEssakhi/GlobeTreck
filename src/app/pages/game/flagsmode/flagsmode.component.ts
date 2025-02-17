@@ -104,7 +104,6 @@ export class FlagsmodeComponent implements OnInit, OnDestroy {
 
   timeUp(): void {
     this.stopTimer();
-    alert("Time is up! Moving to next round.");
     // When time is up, consider the round as finished with 0 points.
     this.finishRound();
   }
